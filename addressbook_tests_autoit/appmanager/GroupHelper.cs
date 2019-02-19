@@ -14,7 +14,6 @@ namespace addressbook_tests_autoit
         List<GroupData> list = new List<GroupData>();
         public List<GroupData> GetGroupList()
         {
-            
             OpenGroupsDialogue();
             string count = aux.ControlTreeView(
                 GROUPWINTITLE,"", "WindowsForms10.SysTreeView32.app.0.2c908d51",
