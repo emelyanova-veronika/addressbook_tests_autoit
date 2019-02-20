@@ -1,27 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace addressbook_tests_autoit
 {
     [TestFixture]
-    public class GroupCreationTests : TestBase
+    public class GroupRemovalTests : TestBase
     {
         [Test]
-        public void TestGroupCreation()
+        public void TestGroupRemoval()
         {
+            app.Groups.OpenGroupsDialogue();
             List<GroupData> oldGroups = app.Groups.GetGroupList();
-            GroupData newGroup = new GroupData()
-            {
-                Name = "еуц"
-            };
+            app.Groups.Remove(1);
 
-            app.Groups.Add(newGroup);
+            
             List<GroupData> newGroups = app.Groups.GetGroupList();
-            oldGroups.Add(newGroup);
-            oldGroups.Sort();
-            newGroups.Sort();
+            oldGroups.RemoveAt(0);
             Assert.AreEqual(oldGroups,newGroups);
+           
         }
     }
 }
